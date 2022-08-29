@@ -1,0 +1,31 @@
+CREATE DATABASE Example
+
+CREATE TABLE Customers (
+   customer_id int NOT NULL,
+   first_name VARCHAR(50),
+   PRIMARY KEY (Customer_id)
+);
+
+CREATE TABLE Orders(
+ order_id INT NOT NULL,
+ amount VARCHAR(20),
+ PRIMARY KEY (order_id),
+ customer_id int,
+ FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+
+INSERT INTO Customers (customer_id, first_name)
+VALUES('2', 'Naqeeb');
+
+INSERT INTO Orders (order_id, amount,customer_id)
+VALUES('1', '1000', '1');
+
+DELETE FROM Customers 
+Where customer_id = 2;
+
+SELECT order_id As OrderID, amount AS OrderAmount, first_name AS FirstName
+FROM Orders O
+FULL JOIN Customers C  ON O.customer_id = C.customer_id;
+
+SELECT * FROM Orders;
+SELECT * FROM Customers;
